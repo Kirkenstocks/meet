@@ -1,7 +1,7 @@
 # Meet App
 
 ### Description
-This Meet app is a serverless, progressive web application built with React using a test-driven development technique. The application uses the Google
+The Meet app is a serverless, progressive web application built with React using a test-driven development technique. The application uses the Google
 Calendar API to fetch upcoming events.
 
 ### Features with User Stories and Scenarios in Gherkin's Syntax
@@ -70,6 +70,9 @@ Calendar API to fetch upcoming events.
      Given the user has opened the app and has an active connection or the relevant data is cached;\
 	   When the user clicks on the “show event data” button;\
 	   Then the user will be shown charts with the number of events in each city.
+
+### Serverless Architecture
+Serverless functions are used throughout the app to achieve its core functions and define its business logic. They are used to handle user authorization by coordinating the Meet front end with the Google OAuth server, enabling the user to sign in with their Google account. Once authorized, serverless functions allow the user to search for events, filter by city, and return public Google Calendar data via the Meet front end.
 
 ### How to Use
 
