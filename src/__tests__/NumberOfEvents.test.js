@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { render } from '@testing-library/react';
 import NumberOfEvents from '../components/NumberOfEvents';
 import userEvent from '@testing-library/user-event';
