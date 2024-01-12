@@ -22,12 +22,13 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]);
 
   return (
     <div className="App">
+      <h1>Meet App</h1>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents />
+      <NumberOfEvents currentNOE = {currentNOE} setCurrentNOE={setCurrentNOE} />
       <EventList events={events} />
     </div>
   );
