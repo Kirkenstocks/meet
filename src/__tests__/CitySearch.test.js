@@ -1,12 +1,15 @@
-import { render } from '@testing-library/react';
+/* eslint-disable */
+import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
+import App from '../App';
 import { extractLocations, getEvents } from '../api';
 
+// unit tests
 describe('<CitySearch /> component', () => {
   let CitySearchComponent;
   beforeEach(() => {
-    CitySearchComponent = render(<CitySearch />);
+    CitySearchComponent = render(<CitySearch allLocations={[]} />);
   })
 
   test('renders text input', () => {
@@ -51,11 +54,27 @@ describe('<CitySearch /> component', () => {
       }
   });
 
-  test('renders the suggestion text in the textbox upon clicking on the suggestion', async () => {
+  test('only "see all cities" is shown if user enters a city with no events', async () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
     CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+
+    const cityTextBox = CitySearchComponent.queryByRole('textbox');
+    await user.type(cityTextBox, 'Paris, France');
+
+    const suggestionListItems = CitySearchComponent.queryAllByRole('listitem');
+    expect(suggestionListItems.length).toBe(1);
+  });
+
+  test('renders the suggestion text in the textbox upon clicking on the suggestion', async () => {
+    const user = userEvent.setup();
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
+    CitySearchComponent.rerender(<CitySearch
+      allLocations={allLocations}
+      setCurrentCity={() => { }} 
+    />);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, 'Berlin');
@@ -65,5 +84,24 @@ describe('<CitySearch /> component', () => {
     await user.click(BerlinGermanySuggestion);
 
     expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
+  });
+});
+
+// integration tests
+describe('<CitySearch /> integration', () => {
+  test('renders suggestion list when the app is rendered', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const CitySearchDOM = AppDOM.querySelector('#city-search');
+    const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+    await user.click(cityTextBox);
+
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
+
+    const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
+    expect(suggestionListItems.length).toBe(allLocations.length + 1);
   });
 });

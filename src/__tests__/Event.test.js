@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { render } from '@testing-library/react';
 import Event from "../components/Event";
 import { getEvents } from '../api';

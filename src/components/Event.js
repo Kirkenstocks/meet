@@ -6,14 +6,14 @@ const Event = ( {event} ) => {
   return (
     <li>
       <h2>{event.summary}</h2>
-      <p>{new Date(event.created).toISOString()}</p>
+      <p>{new Date(event.created).toUTCString()}</p>
       <p>{event.location}</p>
       {showDetails ? 
         <div className="details">
           <h4>About event:</h4>
           <p>{event.description}</p>
         </div> : null}
-      <button onClick={() => {
+      <button className="details-btn" onClick={() => {
         showDetails ? setShowDetails(false) : setShowDetails(true)
         }}>{showDetails ? "Hide details" : "Show details"}</button>
     </li>
