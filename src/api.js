@@ -1,11 +1,13 @@
 import mockData from "./mock-data";
 
+// pulls locations from event data and returns as an array
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;
 };
 
+// checks to see if a token is present
 const checkToken = async (accessToken) => {
   const response = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
@@ -14,6 +16,7 @@ const checkToken = async (accessToken) => {
   return result;
 };
 
+// tidies the url shown by removing queries
 const removeQuery = () => {
   let newurl;
   if (window.history.pushState && window.location.pathname) {
@@ -29,6 +32,7 @@ const removeQuery = () => {
   }
 };
 
+// gets event data from mockdata if local, from google api if live
 export const getEvents = async () => {
   if (window.location.href.startsWith('http://localhost')) {
     return mockData;
@@ -48,6 +52,7 @@ export const getEvents = async () => {
   }
 };
 
+// takes code from google api and retrieves token
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
@@ -59,6 +64,7 @@ const getToken = async (code) => {
   return access_token;
 };
 
+// retrieves token from local storage if present or from api if not present
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
