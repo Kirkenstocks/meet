@@ -2,7 +2,6 @@
 .App {
   text-align: center;
   padding: 2% 5%;
-  background-color: #222;
   color: #fff; 
 }
 
@@ -46,7 +45,7 @@ input[type="number"] {
 
 .suggestions {
   width: 250px;
-  position: absolute;
+  /* position: absolute; */
   top: 45px;
   z-index: 2;
   align-self: center;
@@ -102,4 +101,12 @@ input[type="number"] {
 
 #event-number-input {
   margin-top: 8px;
+}
+
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  z-index: 1000;
 }
