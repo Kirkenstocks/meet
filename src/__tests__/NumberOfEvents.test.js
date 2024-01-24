@@ -8,7 +8,7 @@ import App from '../App';
 describe('<NumberOfEvents /> component', () => {
   let NumOfEventsComponent;
   beforeEach(() => {
-    NumOfEventsComponent = render(<NumberOfEvents setCurrentNOE={()=> {}} />);
+    NumOfEventsComponent = render(<NumberOfEvents setCurrentNOE={()=> {}} setErrorAlert={() => {}} />);
   });
 
   test('renders a textbox input field', () => {
