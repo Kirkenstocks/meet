@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import NProgress from 'nprogress';
 import { extractLocations, getEvents } from "./api";
 import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
 import { ErrorAlert, InfoAlert, WarningAlert } from './components/Alert';
 import './App.css';
+
+NProgress.configure({ showSpinner: false, minimum: 0.1, easing: 'ease', speed: 500 });
 
 const App = () => {
   const [events, setEvents] = useState([]);

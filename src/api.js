@@ -1,3 +1,4 @@
+import NProgress from "nprogress";
 import mockData from "./mock-data";
 
 // pulls locations from event data and returns as an array
@@ -34,13 +35,16 @@ const removeQuery = () => {
 
 // gets event data from mockdata if local, from google api if live
 export const getEvents = async () => {
+  NProgress.start();
   if (window.location.href.startsWith('http://localhost')) {
+    NProgress.done();
     return mockData;
   }
 
   if(!navigator.onLine) {
     const events = localStorage.getItem('lastEvents');
-    // NProgress.done();
+    NProgress.inc();
+    NProgress.done();
     return events ? JSON.parse(events) : [];
   }
 
@@ -53,7 +57,8 @@ export const getEvents = async () => {
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
-      // NProgress.done();
+      NProgress.inc();
+      NProgress.done();
       localStorage.setItem('lastEvents', JSON.stringify(result.events));
       return result.events;
     } else return null;
