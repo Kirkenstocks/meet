@@ -18,7 +18,9 @@ const CityEventsChart = ({ events, allLocations }) => {
   }
 
   return (
-    <ResponsiveContainer width="99%" height={400}>
+    <div>
+      <h3>Number of Events by City</h3>
+      <ResponsiveContainer width="99%" height={400}>
       <ScatterChart
         margin={{
           top: 20,
@@ -27,19 +29,21 @@ const CityEventsChart = ({ events, allLocations }) => {
           left: -30,
         }}
       >
-        <CartesianGrid />
+        <CartesianGrid stroke="#fff" />
         <XAxis 
-          type="category" dataKey="city" name="City" 
+          type="category" dataKey="city" name="City" stroke="#fff"
           angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14 }}
         />
         <YAxis 
-          type="number" dataKey="count" 
+          type="number" dataKey="count" stroke="#fff"
           name="Number of Events" allowDecimals={false} 
         />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name="A school" data={data} fill="#8884d8" />
+        <Scatter name="Events per city" data={data} fill="#8359ee" />
       </ScatterChart>
     </ResponsiveContainer>
+    </div>
+    
   );
 };
 
