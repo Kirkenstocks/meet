@@ -6,7 +6,7 @@ const Event = ( {event} ) => {
   return (
     <li className="event">
       <h2>{event.summary}</h2>
-      <p data-testid="event-start">{new Date(event.created).toUTCString()}</p>
+      <p data-testid="event-start">{new Date(event.start.dateTime).toUTCString()}</p>
       <p>{event.location}</p>
       {showDetails ? 
         <div className="details">
