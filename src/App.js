@@ -6,6 +6,7 @@ import CitySearch from './components/CitySearch';
 import NumberOfEvents from './components/NumberOfEvents';
 import CityEventsChart from './components/CityEventsChart';
 import EventGenresChart from './components/EventGenresChart';
+import Footer from './components/Footer';
 import { ErrorAlert, InfoAlert, WarningAlert } from './components/Alert';
 import './App.css';
 
@@ -47,21 +48,23 @@ const App = () => {
         
       </div>
       <h1>Meet App</h1>
+      <h2>Find a coding event near you!</h2>
       <CitySearch 
         allLocations={allLocations} 
         setCurrentCity={setCurrentCity} 
         setInfoAlert={setInfoAlert}
       />
       <NumberOfEvents 
-        currentNOE = {currentNOE}
+        currentNOE={currentNOE}
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} 
       />
       <div className="charts-container">
-        <EventGenresChart events={events} />
         <CityEventsChart events={events} allLocations={allLocations} />
+        <EventGenresChart events={events} />
       </div>
       <EventList events={events} />
+      <Footer />
     </div>
   );
 }
