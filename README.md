@@ -20,7 +20,7 @@ To run the app locally download the repository, navigate to the root folder in y
      When the user starts typing in the city textbox;\
      Then the user should receive a list of cities (suggestions) that match what they’ve typed.
   3. Scenario: user can select a city from the suggested list\
-     Given user was typing “Seattle” in the city textbox AND the list of suggested cities is showing;\
+     Given user was typing “London” in the city textbox AND the list of suggested cities is showing;\
      When the user selects a city from the list;\
      Then their city should be changed to that city AND the user should receive a list of upcoming events in that city.
      
