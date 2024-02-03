@@ -87,7 +87,7 @@ Serverless functions are used throughout the app to achieve its core functions a
 - NProgress
 - Jest/Jest-Cucumber
 - Puppeteer
-- Atatus
+- Atatus\
 Note: a full list of dependencies can be found in the package.json file.
 
 ### Credits
