@@ -5,8 +5,8 @@ The Meet app is a serverless, progressive web application built with React using
 Calendar API to fetch upcoming events.
 
 ### How to Use
-To visit the live site, follow this link to https://kirkenstocks.github.io/meet/./
-To run the app locally download the repository, navigate to the root folder in your terminal, and use the command <code>npm run start</code>. Be aware that while running on a local server the app will use an abbreviated event list from mockdata.js.
+To run the app locally download the repository, navigate to the root folder in your terminal, and use the command <code>npm run start</code>. Be aware that while running on a local server the app will use an abbreviated event list from mockdata.js rather than the full event list.\
+To visit the live site, follow this link to https://kirkenstocks.github.io/meet/
 
 ### Features with User Stories and Scenarios in Gherkin's Syntax
 - **Filter Events by City**\
