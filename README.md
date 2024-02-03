@@ -4,6 +4,10 @@
 The Meet app is a serverless, progressive web application built with React using a test-driven development technique. The application uses the Google
 Calendar API to fetch upcoming events.
 
+### How to Use
+To visit the live site, follow this link to [https://kirkenstocks.github.io/meet/] (https://kirkenstocks.github.io/meet/).
+To run the app locally download the repository, navigate to the root folder in your terminal, and use the command <code>npm run start</code>. Be aware that while running on a local server the app will use an abbreviated event list from mockdata.js.
+
 ### Features with User Stories and Scenarios in Gherkin's Syntax
 - **Filter Events by City**\
   User story: As a user, I should be able to filter events by city so that I can see a list of events taking place in that city.
@@ -72,11 +76,19 @@ Calendar API to fetch upcoming events.
 	   Then the user will be shown charts with the number of events in each city.
 
 ### Serverless Architecture
-Serverless functions are used throughout the app to achieve its core functions and define its business logic. They are used to handle user authorization by coordinating the Meet front end with the Google OAuth server, enabling the user to sign in with their Google account. Once authorized, serverless functions allow the user to search for events, filter by city, and return public Google Calendar data via the Meet front end.
+Serverless functions are used throughout the app to achieve its core functions and define its business logic. They are used to handle user authorization by coordinating the Meet front end with the Google OAuth server, enabling the user to sign in with their Google account. Once authorized, serverless functions allow the user to search for events, filter by city, and return public Google Calendar data via the Meet front end. 
 
-### How to Use
-
-### Dependencies
+### Technologies Used
+- React
+- AWS Lambda
+- Google OAuth2
+- Google Calendar API
+- Recharts
+- NProgress
+- Jest/Jest-Cucumber
+- Puppeteer
+- Atatus
+Note: a full list of dependencies can be found in the package.json file.
 
 ### Credits
 This project was built for the CareerFoundry Full-Stack Web Development program, with their instruction essential to its completion.
