@@ -7,7 +7,7 @@ const EventGenresChart = ({ events }) => {
 
   useEffect(() => {
     setData(getData());
-  }, [`${events}`]);
+  }, [events]);
 
   const getData = () => {
     const data = genres.map((genre) => {
@@ -51,7 +51,7 @@ const EventGenresChart = ({ events }) => {
             fill="#8884d8"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={130}           
+            outerRadius={150}           
           >
             {
               data.map((entry, index) => (
